@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 import {
     Layout,
     Menu,
-    Icon,
-    SubMenu,
-    Breadcrumb,
     Avatar,
 
 } from 'antd';
 
 const {
     Header,
-    Content,
-    Footer
 } = Layout;
 
 
@@ -34,10 +29,6 @@ class NavBar extends Component {
         <Menu.Item key="3">nav 3</Menu.Item>
       </Menu>
     </Header>
-
-    <Footer style={{ textAlign: 'center' }}>
-      Ant Design ©2016 Created by Ant UED
-    </Footer>
   </Layout>
     );
     }

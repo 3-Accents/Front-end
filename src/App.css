@@ -1,7 +1,4 @@
 @import '~antd/dist/antd.css';
-.App {
-  text-align: center;
-}
 
 #components-layout-demo-top .logo {
   width: 120px;
@@ -10,3 +7,9 @@
   margin: 16px 24px 16px 0;
   float: left;
 }
+
+.ant-steps-vertical .ant-steps-item-content {
+  min-height: 48px;
+  overflow: hidden;
+  display: table;
+} 

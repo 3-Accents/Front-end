@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import NavBar from './NavBar'
-import Button from 'react-toolbox/lib/button/Button';
-import {Switch , Route} from "react-router-dom"
-import Home from "./Home"
+import {Switch, Route} from "react-router-dom"
+import NavBar from "./Components/NavBar"
+import Home from "./Components/Home"
+import Footer from "./Components/FooterComponent"
+import { Layout } from 'antd';
+const { Content } = Layout;
 
 
 
@@ -14,10 +16,13 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <Switch>
-           <Route exact path='/' component={Home} />
-            <Route  path='*' component={NotFound} />
-        </Switch>
+        <Content style={{ padding: '1% 15% 0 15%' }}>
+            <Switch>
+                <Route exact path='/' component={Home} />
+                <Route  path='*' component={NotFound} />
+            </Switch>
+        </Content>
+        <Footer />
       </div>
     );
   }
