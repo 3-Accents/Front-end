@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../App.css';
 
 import {
-    Steps,
     Row,
     Col,
     Card,
@@ -23,38 +22,41 @@ class Overview extends Component {
 
                 <Row gutter={20}>
                     <Col span={12}>  
-                    <Card title="Card title 1" bordered={false} style={{textAlign: 'center' }}>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                    <p>Card content</p>
+                    <Card title="Past" bordered={false} style={{textAlign: 'center' }}>
+                    <p>Mary-J-Blige Makes a 2019 comeback vs Jen</p>
+                    <p>Beyonce becomes ugly at 70 vs Hoa</p>
+                    <p>Pizza Bet vs Nick</p>
+                    <p>Pizza Bet vs CJ</p>
+                    <p>Pizza Bet vs Nick</p>
+                    <p>Pizza Bet vs Hoa</p>
+
                  </Card> </Col>
                     <Col span={12}>  
-                    <Card title="Card title 2" bordered={false} style={{textAlign: 'center' }}>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                    <p>Card content</p>
+                    <Card title="Current" bordered={false} style={{textAlign: 'center' }}>
+                    <p>User vs Snow</p>
+                    <p>User vs Hoa</p>
+                    <p>User vs Nick</p>
                  </Card> </Col>
                 </Row>
                     <br/>
                 <Row gutter={20}>
                     <Col span={12}>  
-                    <Card title="Card title 3" bordered={false} style={{ textAlign: 'center'}}>
+                    <Card title="Outgoing" bordered={false} style={{ textAlign: 'center'}}>
                     <p>Card content</p>
                     <p>Card content</p>
                     <p>Card content</p>
                  </Card> </Col>
                     <Col span={12}>  
-                    <Card title="Card title 4" bordered={false} style={{ textAlign: 'center'}}>
+                    <Card title="Incoming" bordered={false} style={{ textAlign: 'center'}}>
                     <p>Card content</p>
                     <p>Card content</p>
                     <p>Card content</p>
                  </Card> 
-                  <Button className="addbut" type="primary" shape="circle" icon="plus" /></Col>
+                  </Col>
                 </Row>
-
-
-
-                </div>
+                  <Button className="addbut" type="primary" shape="circle" icon="plus" />
+                <br/><br/><br/><br/>
+            </div>
         )
     }
 

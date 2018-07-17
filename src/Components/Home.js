@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ExampleForm from './ExampleForm';
 import { 
     Steps,
     Row,
@@ -34,8 +35,7 @@ class Home extends Component {
                             </Steps>
                     </Row>
                 </div>
-                
-                
+                <ExampleForm/>
             </div>
         )
     }

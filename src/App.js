@@ -3,7 +3,7 @@ import './App.css';
 import {Switch, Route} from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import Home from "./Components/Home";
-import { Layout } from 'antd';
+import { Layout, } from 'antd';
 import FooterComponent from './Components/FooterComponent';
 import SendRequest from './Components/SendRequest';
 import Overview from './Components/Overview';

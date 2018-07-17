@@ -4,7 +4,6 @@ import {
     Layout,
     Menu,
     Avatar,
-
 } from 'antd';
 
 const {
@@ -25,7 +24,7 @@ class NavBar extends Component {
         style={{ lineHeight: '64px' }}
       >
           <Menu.Item><Avatar src="./Media/image.png"/> AnteUp</Menu.Item>
-        <Menu.Item className="navbar-right" location="right" key="2">Login With Facebook</Menu.Item>
+        <Menu.Item className="navbar-right" key="2">Login With Facebook</Menu.Item>
       </Menu>
     </Header>
   </Layout>
