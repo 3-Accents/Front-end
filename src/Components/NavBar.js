@@ -21,12 +21,11 @@ class NavBar extends Component {
       <Menu
         theme="dark"
         mode="horizontal"
-        defaultSelectedKeys={['2']}
+        defaultSelectedKeys={['0']}
         style={{ lineHeight: '64px' }}
       >
-        <Menu.Item key="2">AnteUp</Menu.Item>
-           <Avatar src="./Media/image.png" />
-        <Menu.Item key="3">nav 3</Menu.Item>
+          <Menu.Item><Avatar src="./Media/image.png"/> AnteUp</Menu.Item>
+        <Menu.Item className="navbar-right" location="right" key="2">Login With Facebook</Menu.Item>
       </Menu>
     </Header>
   </Layout>

@@ -13,7 +13,7 @@ class FooterComponent extends Component {
   render() {
     return (
       <Footer style={{ textAlign: 'center' }}>
-        Ant Design ©2016 Created by Ant UED
+        3-Accents
       </Footer>
     );
     }
