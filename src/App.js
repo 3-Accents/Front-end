@@ -6,6 +6,7 @@ import Home from "./Components/Home";
 import { Layout } from 'antd';
 import FooterComponent from './Components/FooterComponent';
 import SendRequest from './Components/SendRequest';
+import Overview from './Components/Overview';
 
 const { Content } = Layout;
 
@@ -21,6 +22,7 @@ class App extends Component {
         <Content style={{ padding: '1% 15% 0 15%' }}>
             <Switch>
                 <Route exact path='/' component={Home} />
+                <Route exact path='/Overview' component={Overview} />
                 <Route exact path='/SendRequest' component={SendRequest} />
                 <Route  path='*' component={NotFound} />
             </Switch>

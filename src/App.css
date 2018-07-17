@@ -21,3 +21,10 @@ float: right;
 .ant-layout-footer{
   position: fixed; bottom: 0; left: 0; right: 0;
 }
+
+.addbut {
+  margin: 10% ;
+  margin-bottom:  15%;
+  left: 60%;
+  
+}
