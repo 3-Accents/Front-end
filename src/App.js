@@ -3,7 +3,6 @@ import './App.css';
 import {Switch, Route} from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import Home from "./Components/Home";
-import ExampleForm from "./Components/ExampleForm";
 import { Layout } from 'antd';
 import FooterComponent from './Components/FooterComponent';
 import SendRequest from './Components/SendRequest';

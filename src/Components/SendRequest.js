@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import '../App.css';
 
 import { Form,
-         Select,
          Input,
          Button,
          DatePicker,
+         Card,
 } from 'antd';
 
-const { RangePicker } = DatePicker;
-
-
 const FormItem = Form.Item;
-const Option = Select.Option;
 
 class SendRequest extends Component {
   handleSubmit = (e) => {
@@ -21,13 +17,6 @@ class SendRequest extends Component {
       if (!err) {
         console.log('Received values of form: ', values);
       }
-    });
-  }
-
-  handleSelectChange = (value) => {
-    console.log(value);
-    this.props.form.setFieldsValue({
-      note: `Hi, ${value === 'male' ? 'man' : 'lady'}!`,
     });
   }
 
@@ -41,62 +30,73 @@ class SendRequest extends Component {
   }
 
   render() {
-    const { getFieldDecorator } = this.props.form;
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <FormItem
-          label="Name Your Bet"
-          labelCol={{ span: 5 }}
-          wrapperCol={{ span: 12 }}
-        >
-            <Input />
-        </FormItem>
-        <FormItem
-          label="Who"
-          labelCol={{ span: 5 }}
-          wrapperCol={{ span: 12 }}
-        >
-            <Input />
-        </FormItem>
-        <FormItem
-          label="Description"
-          labelCol={{ span: 5 }}
-          wrapperCol={{ span: 12 }}
-        >
-            <Input />
-        </FormItem>
-        <FormItem
-          label="Wager"
-          labelCol={{ span: 5 }}
-          wrapperCol={{ span: 12 }}
-        >
-            <Input />
-        </FormItem>
-        <FormItem
-          wrapperCol={{ span: 12, offset: 5 }}
-        >
-        </FormItem>
-      
-        <DatePicker
-        showTime
-        format="YYYY-MM-DD HH:mm:ss"
-        placeholder="Select Time"
-        onChange={this.changeDate}
-        onOk={this.confirm}
-        /> 
-        <br/><br/>
-        <RangePicker
-        showTime={{ format: 'HH:mm' }}
-        format="YYYY-MM-DD HH:mm"
-        placeholder={['Start Time', 'End Time']}
-        onChange={this.changeDate}
-        onOk={this.confirm}
-        />
-        <br/><br/>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-      </Form>
+      <div>
+        <h1 style={{fontSize: '3em', textAlign:'center'}}>Make a Bet!</h1>
+        <div style={{ background: '#ECECEC', padding: '30px' }}>
+          <Card bordered={false} style={{ width: '100%', fontSize: '1.5em', textAlign: 'center'}}>
+            <Form onSubmit={this.handleSubmit}>
+              <FormItem
+                label="Title:"
+                labelCol={{ span: 6 }}
+                wrapperCol={{ span: 12 }}
+              >
+                  <Input />
+              </FormItem>
+              <FormItem
+                label="Against"
+                labelCol={{ span: 6 }}
+                wrapperCol={{ span: 12 }}
+              >
+                  <Input />
+              </FormItem>
+              <FormItem
+                label="Bet"
+                labelCol={{ span: 6 }}
+                wrapperCol={{ span: 12 }}
+              >
+                  <Input />
+              </FormItem>
+              <FormItem
+                label="Wager"
+                labelCol={{ span: 6 }}
+                wrapperCol={{ span: 12 }}
+              >
+                  <Input />
+              </FormItem>
+              <FormItem
+                label="Start Date"
+                labelCol={{ span: 6 }}
+                wrapperCol={{ span: 12 }}
+              >
+                <DatePicker
+                showTime
+                format="YYYY-MM-DD HH:mm:ss"
+                placeholder="Start Time"
+                onChange={this.changeDate}
+                onOk={this.confirm}
+                /> 
+              </FormItem>
+              <FormItem
+                label="End Date"
+                labelCol={{ span: 6 }}
+                wrapperCol={{ span: 12 }}
+              >
+              <DatePicker
+              showTime
+              format="YYYY-MM-DD HH:mm:ss"
+              placeholder="End Time"
+              onChange={this.changeDate}
+              onOk={this.confirm}
+              /> 
+              </FormItem>
+                <Button type="primary" htmlType="submit">
+                  Send Request 
+                </Button>
+            </Form>             
+          </Card>
+        </div>
+      </div>
     );
   }
 }
