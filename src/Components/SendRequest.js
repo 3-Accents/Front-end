@@ -76,7 +76,7 @@ class SendRequest extends Component {
           wrapperCol={{ span: 12, offset: 5 }}
         >
         </FormItem>
-        <FormItem>
+      
         <DatePicker
         showTime
         format="YYYY-MM-DD HH:mm:ss"
@@ -84,8 +84,7 @@ class SendRequest extends Component {
         onChange={this.changeDate}
         onOk={this.confirm}
         /> 
-        </FormItem>
-        <FormItem>
+        <br/><br/>
         <RangePicker
         showTime={{ format: 'HH:mm' }}
         format="YYYY-MM-DD HH:mm"
@@ -93,7 +92,7 @@ class SendRequest extends Component {
         onChange={this.changeDate}
         onOk={this.confirm}
         />
-         </FormItem>
+        <br/><br/>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
