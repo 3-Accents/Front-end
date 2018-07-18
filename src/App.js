@@ -22,8 +22,8 @@ class App extends Component {
         <Content style={{ padding: '1% 15% 0 15%' }}>
             <Switch>
                 <Route exact path='/' component={Home} />
-                <Route exact path='/Overview' component={Overview} />
-                <Route exact path='/SendRequest' component={SendRequest} />
+                <Route exact path='/overview' component={Overview} />
+                <Route exact path='/send-request' component={SendRequest} />
                 <Route  path='*' component={NotFound} />
             </Switch>
         

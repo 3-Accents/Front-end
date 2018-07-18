@@ -14,8 +14,8 @@
   display: table;
 } 
 
-.ant-menu-item.navbar-right{
-float: right;
+.navbar-right{
+  float: right;
 }
 
 
