@@ -53,7 +53,8 @@ class NavBar extends Component {
     const height = 600;
     const top = window.screen.height/2 - height/2;
     const left = window.screen.width/2 - width/2;
-    popup = window.open('http://localhost:3013/auth/facebook', 'Login With Facebook 👫', `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars=yes,status=1` )
+    const authUrl = window.location.hostname === 'localhost' ? 'http://localhost:3013/auth/facebook' : 'https://ante-up.herokuapp.com/auth/facebook'
+    popup = window.open(authUrl, 'Login With Facebook 👫', `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars=yes,status=1` )
   }
   logout = () => {
     localStorage.removeItem('token');
