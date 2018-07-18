@@ -30,3 +30,11 @@
 	color:#FFF;
 	text-align:center;
 }
+
+.ant-card-bordered {
+  border: 7px solid #041528;
+}
+
+.ant-steps-label-horizontal {
+  padding: 3% 0 3% 0
+}
