@@ -59,7 +59,7 @@ class Overview extends Component {
                         <BetList title="Past" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
                     </Col>
                     <Col span={12}>  
-                        <BetList title="Current" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
+                        <BetList title="Current" bets={this.state.categories.current} friendsById={this.state.friendsById} user={this.props.user}/>
                     </Col>
                 </Row>
                     <br/>
