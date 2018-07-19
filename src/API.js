@@ -8,6 +8,15 @@ function getBets() {
   }).then(res => res.json());
 }
 
+function getFriends() {
+  return fetch(`${API_URL}/friends`, {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.token
+    }
+  }).then(res => res.json());
+}
+
 export default {
-  getBets
+  getBets,
+  getFriends
 };

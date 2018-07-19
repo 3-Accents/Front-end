@@ -11,25 +11,41 @@ import API from './API';
 
 const { Content } = Layout;
 
-
-
 const NotFound = () => <h1>Not Found</h1>
 
 class App extends Component {
-  componentDidMount() {
-    API.getBets().then(bets => {
-      console.log(bets);
-      // set state with the bets...
-    });
+  state = {
+    user: null
   }
+  componentDidMount(){
+    this.parseToken()
+  }
+  parseToken(){
+    if(localStorage.token){
+      const base64Payload = localStorage.token.split('.')[1]
+      const decodedPayload = atob(base64Payload)
+      const user = JSON.parse(decodedPayload)
+
+      this.setState({
+        user
+      })
+    }
+    else {
+      this.setState({
+        user: null
+      })
+    }
+  }
+
   render() {
+    console.log(this.state.user)
     return (
       <div className="App">
         <NavBar />
         <Content style={{ padding: '1% 15% 0 15%' }}>
             <Switch>
                 <Route exact path='/' component={Home} />
-                <Route exact path='/overview' component={Overview} />
+                <Route exact path='/overview' render={(props) => <Overview {...props} user={this.state.user}/>} />
                 <Route exact path='/send-request' component={SendRequest} />
                 <Route  path='*' component={NotFound} />
             </Switch>

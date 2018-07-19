@@ -28,7 +28,7 @@ class NavBar extends Component {
       const base64Payload = localStorage.token.split('.')[1]
       const decodedPayload = atob(base64Payload)
       const user = JSON.parse(decodedPayload)
-      console.log(user)
+     
       this.setState({
         user
       })

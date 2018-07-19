@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
-
+import API from '../API';
+import BetList from './BetList';
 import {
     Row,
     Col,
@@ -9,21 +10,41 @@ import {
 } from 'antd';
 
 class Overview extends Component {
+    state = {
+        categories: {
+            active: [], //
+            pending: [], //
+            incoming: [], //
+            completed: [], //
+            void: [],//
+            voting: [],//
+            conflicted: [],
+            myBad: []
+        },
+        friendsById: []
+    }
 
-    // This should be on state.... do it.
-    // const categories = {
-    //     active: [],
-    //     pending: [],
-    //     incoming: [],
-    //     completed: [],
-    //     void: [],
-    //     voting: [],
-    //     conflicted: [],
-    //     myBad: []
-    //   };
-
-
+    componentDidMount() {
+        Promise.all([
+            API.getFriends(),
+            API.getBets()
+        ]).then(results => {
+            const friends = results[0]
+            const categories = results[1]
+            
+            const friendsById = {}
+            friends.forEach(friend => {
+                friendsById[friend.id] = friend
+            })
+            this.setState({
+                friendsById,
+                categories
+            })
+        });
+    }
+    
     render(){
+        
         return (
              <div style={{ background: '#ECECEC', padding: '30px' }}>
                  <Card bordered={false} style={{ width: '100%', fontSize: '1.5em', textAlign: 'center'}}>
@@ -34,38 +55,37 @@ class Overview extends Component {
                     <br/>
 
                 <Row gutter={20}>
+                    <Col span={12}>
+                        <BetList title="Past" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
+                    </Col>
                     <Col span={12}>  
-                    <Card title="Past" bordered={false} style={{textAlign: 'center' }}>
-                    <p>Mary-J-Blige Makes a 2019 comeback vs Jen</p>
-                    <p>Beyonce becomes ugly at 70 vs Hoa</p>
-                    <p>Pizza Bet vs Nick</p>
-                    <p>Pizza Bet vs CJ</p>
-                    <p>Pizza Bet vs Nick</p>
-                    <p>Pizza Bet vs Hoa</p>
-
-                 </Card> </Col>
-                    <Col span={12}>  
-                    <Card title="Current" bordered={false} style={{textAlign: 'center' }}>
-                    <p>User vs Snow</p>
-                    <p>User vs Hoa</p>
-                    <p>User vs Nick</p>
-                 </Card> </Col>
+                        <BetList title="Current" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
+                    </Col>
                 </Row>
                     <br/>
                 <Row gutter={20}>
                     <Col span={12}>  
-                    <Card title="Outgoing" bordered={false} style={{ textAlign: 'center'}}>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                 </Card> </Col>
+                        <BetList title="Outgoing" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
+                     </Col>
                     <Col span={12}>  
-                    <Card title="Incoming" bordered={false} style={{ textAlign: 'center'}}>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                 </Card> 
+                        <BetList title="Incoming" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/> 
                   </Col>
+                </Row>
+
+                <Row gutter={20}>
+                    <Col span={12}>  
+                        <BetList title="Void" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
+                    </Col>
+                    <Col span={12}>  
+                        <BetList title="Voting" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
+                    </Col>
+                </Row>
+
+                <Row gutter={20}>
+                
+                    <Col span={12}>  
+                        <BetList title="Conflicted" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
+                    </Col>
                 </Row>
                   <Button className="addbut" type="primary" shape="circle" icon="plus" />
                 <br/><br/><br/><br/>
