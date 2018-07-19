@@ -7,6 +7,7 @@ import { Layout, } from 'antd';
 import FooterComponent from './Components/FooterComponent';
 import SendRequest from './Components/SendRequest';
 import Overview from './Components/Overview';
+import API from './API';
 
 const { Content } = Layout;
 
@@ -15,6 +16,12 @@ const { Content } = Layout;
 const NotFound = () => <h1>Not Found</h1>
 
 class App extends Component {
+  componentDidMount() {
+    API.getBets().then(bets => {
+      console.log(bets);
+      // set state with the bets...
+    });
+  }
   render() {
     return (
       <div className="App">

@@ -10,6 +10,19 @@ import {
 
 class Overview extends Component {
 
+    // This should be on state.... do it.
+    // const categories = {
+    //     active: [],
+    //     pending: [],
+    //     incoming: [],
+    //     completed: [],
+    //     void: [],
+    //     voting: [],
+    //     conflicted: [],
+    //     myBad: []
+    //   };
+
+
     render(){
         return (
              <div style={{ background: '#ECECEC', padding: '30px' }}>
