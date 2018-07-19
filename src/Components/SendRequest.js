@@ -11,6 +11,17 @@ import { Form,
 const FormItem = Form.Item;
 
 class SendRequest extends Component {
+
+  state = {
+    title: '',
+    description: '',
+    startDate: '',
+    endDate: '',
+    receiverId: '',
+    wager: ''
+  }
+  
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -20,13 +31,30 @@ class SendRequest extends Component {
     });
   }
 
+  inputChange = (event) =>{
+    console.log( event.target.value)//text 
+    this.setState({
+      [event.target.name] : event.target.value
+    })
+
+  }
+
   changeDate = (value, dateString) => {
     console.log('Selected Time: ', value);
     console.log('Formatted Selected Time: ', dateString);
   }
   
-  confirm = (value) => {
-    console.log('onOk: ', value);
+  confirmStartDate = (value) => {
+    console.log('Start: ', value);
+    this.setState({
+      startDate : value
+    })
+  }
+  confirmEndDate = (value) => {
+    console.log('End: ', value);
+    this.setState({
+      endDate : value
+    })
   }
 
   render() {
@@ -41,28 +69,28 @@ class SendRequest extends Component {
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                  <Input />
+                  <Input name="title" onChange={this.inputChange}/>
               </FormItem>
               <FormItem
                 label="Against"
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                  <Input />
+                  <Input name="bet" onChange={this.inputChange}/>
               </FormItem>
               <FormItem
                 label="Bet"
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                  <Input />
+                  <Input name="description" onChange={this.inputChange}/>
               </FormItem>
               <FormItem
                 label="Wager"
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                  <Input />
+                  <Input name="wager" onChange={this.inputChange}/>
               </FormItem>
               <FormItem
                 label="Start Date"
@@ -74,7 +102,7 @@ class SendRequest extends Component {
                 format="YYYY-MM-DD HH:mm:ss"
                 placeholder="Start Time"
                 onChange={this.changeDate}
-                onOk={this.confirm}
+                onOk={this.confirmStartDate}
                 /> 
               </FormItem>
               <FormItem
@@ -87,7 +115,7 @@ class SendRequest extends Component {
               format="YYYY-MM-DD HH:mm:ss"
               placeholder="End Time"
               onChange={this.changeDate}
-              onOk={this.confirm}
+              onOk={this.confirmEndDate}
               /> 
               </FormItem>
                 <Button type="primary" htmlType="submit">
