@@ -10,9 +10,11 @@ import { Form,
          Button,
          DatePicker,
          Card,
+         AutoComplete
 } from 'antd';
 
 const FormItem = Form.Item;
+
 
 class SendRequest extends Component {
 
@@ -22,9 +24,21 @@ class SendRequest extends Component {
     startDate: '',
     endDate: '',
     receiverId: 1,
-    wager: ''
+    wager: '',
+    friends: []
   }
-  
+
+  componentDidMount() {
+    API.getFriends().then(friends => {
+      friends.forEach(friend => {
+        friend.value = friend.id;
+        friend.text = friend.displayName;
+      })
+      this.setState({
+        friends
+      })
+    });
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -41,14 +55,19 @@ class SendRequest extends Component {
     });
   }
 
-  inputChange = (event) =>{
+  inputChange = (event) => {
     console.log( event.target.value)//text 
     this.setState({
       [event.target.name] : event.target.value
     })
 
   }
-  
+  friendChanged = (value) => {
+    this.setState({
+      receiverId: value
+    })
+  }
+
   confirmStartDate = (value) => {
     console.log('Start: ', value);
     this.setState({
@@ -74,41 +93,46 @@ class SendRequest extends Component {
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                  <Input name="title" onChange={this.inputChange} required/>
+                <Input name="title" onChange={this.inputChange} required/>
               </FormItem>
               <FormItem
                 label="Against"
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-              {/*  todo - add dropdown with friends  */}
-                  <Input name="receiverId" />
+              <AutoComplete
+                onChange={this.friendChanged}
+                label="Friends"
+                dataSource={this.state.friends}
+                filterOption={(inputValue, option) => option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+                required
+              />
               </FormItem>
               <FormItem
                 label="Bet"
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                  <Input name="description" onChange={this.inputChange} required/>
+                <Input name="description" onChange={this.inputChange} required/>
               </FormItem>
               <FormItem
                 label="Wager"
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                  <Input name="wager" onChange={this.inputChange} required/>
+                <Input name="wager" onChange={this.inputChange} required/>
               </FormItem>
               <FormItem
                 label="Start Date"
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                <DatePicker
-                showTime
-                format="YYYY-MM-DD HH:mm:ss"
-                placeholder="Start Time"
-                onOk={this.confirmStartDate}
-                /> 
+              <DatePicker
+              showTime
+              format="YYYY-MM-DD HH:mm:ss"
+              placeholder="Start Time"
+              onOk={this.confirmStartDate}
+              /> 
               </FormItem>
               <FormItem
                 label="End Date"
