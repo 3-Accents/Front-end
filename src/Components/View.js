@@ -67,7 +67,7 @@ class View extends Component{
       //Pending and incoming are always going to be broken until we have other users. 
       //Currently the creatorId and receiverId are the same and that breaks it. 
       //We cannot get anything into conflicted because there arent any other id's to vote for other than ID 1 (everything goes to voting).
-      if (betStart > now && !this.state.receiverAccepted) {
+      if (betStart > now && !this.state.receiverAccepted && this.state.creatorId === this.props.user.id) {
         //pending is any bet where the receiver has not accepted it and the startdate is after the current date
         return( 
           <div>
