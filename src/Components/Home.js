@@ -16,14 +16,14 @@ class Home extends Component {
         return (
             <div>
                 <div className="Home"></div>
-                <div style={{ backgroundImage: `url(./Media/anteUp-bg.png)`, padding: '30px'}}>
-                    <Card bordered={false} style={{ width: '100%', fontSize: '1.5em', textAlign: 'center', background:'transparent'}}>
-                    <h1>Welcome to AnteUp!</h1>
-                    <hr/>
-                    <p>AnteUp is the best betting app out there! Connect with your Facebook friends to make bets and win! Take a look at the example content below. </p>
-                    
-                    
-                    </Card>
+                <div style={{ backgroundSize: '100% 130%', backgroundImage: `url(./Media/anteUp-bg.png)`, padding: '30px'}}>
+                    <div style={{ width: '25vw'}}>
+                        <Card bordered={false} style={{ height: '50vh', width: '100%', fontSize: '1.5em', textAlign: 'center', background:'transparent'}}>
+                            <h1>Welcome to AnteUp!</h1>
+                            <hr/>
+                            <p>AnteUp is the best betting app out there! Connect with your Facebook friends to make bets and win! Take a look at the example content below. </p>
+                        </Card>
+                    </div>
                 </div>
                 <div>
                     <Row type="flex" justify="center">
