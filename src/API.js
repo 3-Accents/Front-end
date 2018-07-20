@@ -8,6 +8,14 @@ function getBets() {
   }).then(res => res.json());
 }
 
+function getBet(id) {
+  return fetch(`${API_URL}/bets/${id}`, {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.token
+    }
+  }).then(res => res.json());
+}
+
 function getFriends() {
   return fetch(`${API_URL}/friends`, {
     headers: {
@@ -30,5 +38,6 @@ function sendRequest(bet) {
 export default {
   getBets,
   getFriends,
-  sendRequest
+  sendRequest,
+  getBet
 };

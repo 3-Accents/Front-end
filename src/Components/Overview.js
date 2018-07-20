@@ -87,7 +87,7 @@ class Overview extends Component {
                         <BetList title="Conflicted" bets={this.state.categories.conflicted} friendsById={this.state.friendsById} user={this.props.user}/>
                     </Col>
                 </Row>
-                  <Button className="addbut" type="primary" shape="circle" icon="plus" />
+                  <Button className="addbut" type="primary" shape="circle" icon="plus" href="/send-request" />
                 <br/><br/><br/><br/>
             </div>
         )

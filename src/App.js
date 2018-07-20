@@ -48,7 +48,7 @@ class App extends Component {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/overview' render={(props) => <Overview {...props} user={this.state.user}/>} />
                 <Route exact path='/send-request' component={SendRequest} />
-                <Route exact path='/view' component={View} />
+                <Route exact path='/view/:id' render={(props) => <View {...props} user={this.state.user}/>} />
                 <Route  path='*' component={NotFound} />
             </Switch>
         

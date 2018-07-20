@@ -30,7 +30,6 @@ class SendRequest extends Component {
     e.preventDefault();
     this.props.form.validateFields((err) => {
       if (!err) {
-        console.log(this.state)
         this.state.receiverId = Number(this.state.receiverId)
         API
           .sendRequest(this.state)
@@ -42,7 +41,6 @@ class SendRequest extends Component {
   }
 
   inputChange = (event) =>{
-    console.log( event.target.value)//text 
     this.setState({
       [event.target.name] : event.target.value
     })
@@ -50,13 +48,11 @@ class SendRequest extends Component {
   }
   
   confirmStartDate = (value) => {
-    console.log('Start: ', value);
     this.setState({
       startDate : value
     })
   }
   confirmEndDate = (value) => {
-    console.log('End: ', value);
     this.setState({
       endDate : value
     })
