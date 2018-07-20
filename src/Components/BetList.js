@@ -9,8 +9,8 @@ const BetList = (props) => {
         <Card title={props.title} bordered={false} style={{textAlign: 'center' }}>
             {props.bets.map(bet => {
                 return( 
-                    <p>
-                        <Link to={`/view/${bet.id}`} key={bet.id}>{bet.title} vs {props.friendsById[bet.receiverId === props.user.id ? bet.creatorId : bet.receiverId].displayName}</Link>
+                    <p key={bet.id}>
+                        <Link to={`/view/${bet.id}`}>{bet.title} vs {props.friendsById[bet.receiverId === props.user.id ? bet.creatorId : bet.receiverId].displayName}</Link>
                     </p>
                 )
             })}

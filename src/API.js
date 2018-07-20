@@ -35,9 +35,23 @@ function sendRequest(bet) {
   }).then(res => res.json());
 }
 
+function acceptRequest(id, accept) {
+  return fetch(`${API_URL}/bets/${id}/accept`, {
+    method: 'post',
+    headers: {
+      Authorization: 'Bearer ' + localStorage.token,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      accept
+    })
+  }).then(res => res.json());
+}
+
 export default {
   getBets,
   getFriends,
   sendRequest,
-  getBet
+  getBet,
+  acceptRequest
 };

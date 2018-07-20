@@ -31,9 +31,11 @@
 }
 #negativeButton{
   background-color:rgb(205, 24, 24);
+  color: white;
 }
 #positiveButton{
   background-color:rgb(0, 102, 255);
+  color: white;
 }
 
 a.sendRequestButton.ant-btn {
