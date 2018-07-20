@@ -59,32 +59,32 @@ class Overview extends Component {
                         <BetList title="Past" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
                     </Col>
                     <Col span={12}>  
-                        <BetList title="Current" bets={this.state.categories.current} friendsById={this.state.friendsById} user={this.props.user}/>
+                        <BetList title="Active" bets={this.state.categories.active} friendsById={this.state.friendsById} user={this.props.user}/>
                     </Col>
                 </Row>
                     <br/>
                 <Row gutter={20}>
                     <Col span={12}>  
-                        <BetList title="Outgoing" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
+                        <BetList title="Outgoing" bets={this.state.categories.pending} friendsById={this.state.friendsById} user={this.props.user}/>
                      </Col>
                     <Col span={12}>  
-                        <BetList title="Incoming" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/> 
+                        <BetList title="Incoming" bets={this.state.categories.incoming} friendsById={this.state.friendsById} user={this.props.user}/> 
                   </Col>
                 </Row>
 
                 <Row gutter={20}>
                     <Col span={12}>  
-                        <BetList title="Void" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
+                        <BetList title="Void" bets={this.state.categories.void} friendsById={this.state.friendsById} user={this.props.user}/>
                     </Col>
                     <Col span={12}>  
-                        <BetList title="Voting" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
+                        <BetList title="Voting" bets={this.state.categories.voting} friendsById={this.state.friendsById} user={this.props.user}/>
                     </Col>
                 </Row>
 
                 <Row gutter={20}>
                 
                     <Col span={12}>  
-                        <BetList title="Conflicted" bets={this.state.categories.completed} friendsById={this.state.friendsById} user={this.props.user}/>
+                        <BetList title="Conflicted" bets={this.state.categories.conflicted} friendsById={this.state.friendsById} user={this.props.user}/>
                     </Col>
                 </Row>
                   <Button className="addbut" type="primary" shape="circle" icon="plus" />
