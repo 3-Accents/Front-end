@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
+import API from '../API';
+import {
+  withRouter
+} from 'react-router-dom';
 
 import { Form,
          Input,
@@ -17,16 +21,22 @@ class SendRequest extends Component {
     description: '',
     startDate: '',
     endDate: '',
-    receiverId: '',
+    receiverId: 1,
     wager: ''
   }
   
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields((err) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        console.log(this.state)
+        this.state.receiverId = Number(this.state.receiverId)
+        API
+          .sendRequest(this.state)
+          .then(() => {
+            this.props.history.push('/overview');
+          })
       }
     });
   }
@@ -37,11 +47,6 @@ class SendRequest extends Component {
       [event.target.name] : event.target.value
     })
 
-  }
-
-  changeDate = (value, dateString) => {
-    console.log('Selected Time: ', value);
-    console.log('Formatted Selected Time: ', dateString);
   }
   
   confirmStartDate = (value) => {
@@ -69,28 +74,29 @@ class SendRequest extends Component {
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                  <Input name="title" onChange={this.inputChange}/>
+                  <Input name="title" onChange={this.inputChange} required/>
               </FormItem>
               <FormItem
                 label="Against"
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                  <Input name="bet" onChange={this.inputChange}/>
+              {/*  todo - add dropdown with friends  */}
+                  <Input name="receiverId" />
               </FormItem>
               <FormItem
                 label="Bet"
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                  <Input name="description" onChange={this.inputChange}/>
+                  <Input name="description" onChange={this.inputChange} required/>
               </FormItem>
               <FormItem
                 label="Wager"
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >
-                  <Input name="wager" onChange={this.inputChange}/>
+                  <Input name="wager" onChange={this.inputChange} required/>
               </FormItem>
               <FormItem
                 label="Start Date"
@@ -101,7 +107,6 @@ class SendRequest extends Component {
                 showTime
                 format="YYYY-MM-DD HH:mm:ss"
                 placeholder="Start Time"
-                onChange={this.changeDate}
                 onOk={this.confirmStartDate}
                 /> 
               </FormItem>
@@ -114,7 +119,6 @@ class SendRequest extends Component {
               showTime
               format="YYYY-MM-DD HH:mm:ss"
               placeholder="End Time"
-              onChange={this.changeDate}
               onOk={this.confirmEndDate}
               /> 
               </FormItem>
@@ -129,4 +133,4 @@ class SendRequest extends Component {
   }
 }
 const SendRequestForm = Form.create()(SendRequest);
-export default SendRequestForm;
+export default withRouter(SendRequestForm);

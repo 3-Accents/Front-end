@@ -16,7 +16,19 @@ function getFriends() {
   }).then(res => res.json());
 }
 
+function sendRequest(bet) {
+  return fetch(`${API_URL}/bets`, {
+    method: 'post',
+    headers: {
+      Authorization: 'Bearer ' + localStorage.token,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(bet)
+  }).then(res => res.json());
+}
+
 export default {
   getBets,
-  getFriends
+  getFriends,
+  sendRequest
 };
