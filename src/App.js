@@ -7,6 +7,7 @@ import { Layout, } from 'antd';
 import FooterComponent from './Components/FooterComponent';
 import SendRequest from './Components/SendRequest';
 import Overview from './Components/Overview';
+import View from './Components/View';
 import API from './API';
 
 const { Content } = Layout;
@@ -47,6 +48,7 @@ class App extends Component {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/overview' render={(props) => <Overview {...props} user={this.state.user}/>} />
                 <Route exact path='/send-request' component={SendRequest} />
+                <Route exact path='/view' component={View} />
                 <Route  path='*' component={NotFound} />
             </Switch>
         
