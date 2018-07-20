@@ -48,10 +48,24 @@ function acceptRequest(id, accept) {
   }).then(res => res.json());
 }
 
+function finalizeBet(id, winner) {
+  return fetch(`${API_URL}/bets/${id}/winner`, {
+    method: 'post',
+    headers: {
+      Authorization: 'Bearer ' + localStorage.token,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      winner
+    })
+  }).then(res => res.json());
+}
+
 export default {
   getBets,
   getFriends,
   sendRequest,
   getBet,
-  acceptRequest
+  acceptRequest,
+  finalizeBet
 };

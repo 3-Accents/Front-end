@@ -24,6 +24,10 @@ class View extends Component{
     }
 
     componentDidMount(){
+      this.getBet();
+    }
+
+    getBet = () => {
       const {id} = this.props.match.params;
       API.getBet(id)
         .then(bet => {
@@ -40,12 +44,21 @@ class View extends Component{
         this.props.history.push('/overview');
       })
     };
+
     acceptRequest = () => {
       API.acceptRequest(this.state.id, true)
       .then(() => {
         this.props.history.push('/overview');
       })
     };
+    
+    finalize = (who) => {
+      const winner = who === 'me' ? this.props.user.id : this.state.creatorId === this.props.user.id ? this.state.receiverId : this.state.creatorId;
+      API.finalizeBet(this.state.id, winner)
+      .then(() => {
+        this.getBet();
+      });
+    }
 
     getStatusElement(){
       const now = Date.now();
@@ -96,8 +109,14 @@ class View extends Component{
             <div style={{padding: '26px 16px 16px'}}>
             <h1>Choose a Winner!</h1>
               <ButtonGroup >
-                <Button id="positiveButton"><span role="img" aria-label="win">Me 👍</span></Button>
-                <Button id="negativeButton"><span role="img" aria-label="loss">Them 👎</span></Button>
+                <Button onClick={() => {
+                  this.finalize('me')
+                }} 
+                id="positiveButton"><span role="img" aria-label="win">Me 👍</span></Button>
+                <Button onClick={() => {
+                  this.finalize('them')
+                }} 
+                id="negativeButton"><span role="img" aria-label="loss">Them 👎</span></Button>
               </ButtonGroup>
             </div>}
           </div>
