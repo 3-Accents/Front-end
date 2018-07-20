@@ -72,7 +72,9 @@ class NavBar extends Component {
         defaultSelectedKeys={['0']}
         style={{ lineHeight: '64px' }}
       >
-        <Menu.Item><Avatar src="./Media/image.png"/> AnteUp</Menu.Item>
+        <Menu.Item>
+          <a href="/overview"><Avatar src="./Media/image.png"/> AnteUp</a>
+        </Menu.Item>
         {!this.state.user ? 
           <Menu.Item onClick={this.loginWithFB} className="navbar-right" key="2">Login With Facebook</Menu.Item> :
           <SubMenu className="navbar-right" title={<span><Avatar src={this.state.user.profilePic}/> {this.state.user.displayName}</span>}>

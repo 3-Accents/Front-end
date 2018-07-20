@@ -29,6 +29,12 @@
 	background-color:#0C9;
 	color:#FFF;
 }
+#negativeButton{
+  background-color:rgb(205, 24, 24);
+}
+#positiveButton{
+  background-color:rgb(0, 102, 255);
+}
 
 a.sendRequestButton.ant-btn {
   line-height: 55px;
