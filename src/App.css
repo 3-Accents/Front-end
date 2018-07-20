@@ -19,7 +19,7 @@
 }
 
 
-.addbut {
+.sendRequestButton {
 	position:fixed;
 	width:60px;
 	height:60px;
@@ -28,7 +28,10 @@
 	border-radius:50px;
 	background-color:#0C9;
 	color:#FFF;
-	text-align:center;
+}
+
+a.sendRequestButton.ant-btn {
+  line-height: 55px;
 }
 
 .ant-card-bordered {

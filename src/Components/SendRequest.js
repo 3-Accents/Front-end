@@ -44,9 +44,13 @@ class SendRequest extends Component {
     e.preventDefault();
     this.props.form.validateFields((err) => {
       if (!err) {
-        this.state.receiverId = Number(this.state.receiverId)
+        const request = {
+          ...this.state,
+          receiverId: Number(this.state.receiverId),
+          friends: undefined
+        };
         API
-          .sendRequest(this.state)
+          .sendRequest(request)
           .then(() => {
             this.props.history.push('/overview');
           })
@@ -105,7 +109,7 @@ class SendRequest extends Component {
               />
               </FormItem>
               <FormItem
-                label="Bet"
+                label="Description"
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 12 }}
               >

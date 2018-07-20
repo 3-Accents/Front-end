@@ -8,7 +8,6 @@ import FooterComponent from './Components/FooterComponent';
 import SendRequest from './Components/SendRequest';
 import Overview from './Components/Overview';
 import View from './Components/View';
-import API from './API';
 
 const { Content } = Layout;
 
@@ -39,7 +38,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.user)
     return (
       <div className="App">
         <NavBar />
@@ -51,7 +49,6 @@ class App extends Component {
                 <Route exact path='/view/:id' render={(props) => <View {...props} user={this.state.user}/>} />
                 <Route  path='*' component={NotFound} />
             </Switch>
-        
         </Content>
         <FooterComponent/>
       </div>
